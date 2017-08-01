@@ -9,6 +9,8 @@ import {
 
 export default class Calendar extends PureComponent {
 
+    isSelected = true
+
     static get defaultProps() {
         return {
             date: new Date(),
@@ -42,12 +44,14 @@ export default class Calendar extends PureComponent {
 
     handleNextButtonPress() {
         if (this.props.onNextButtonPress !== null) {
+            this.isSelected = false
             this.props.onNextButtonPress();
         }
     }
 
     handlePrevButtonPress() {
         if (this.props.onPrevButtonPress !== null) {
+            this.isSelected = false
             this.props.onPrevButtonPress();
         }
     }
@@ -57,7 +61,7 @@ export default class Calendar extends PureComponent {
             const month = this.props.date.getMonth();
             const year  = this.props.date.getFullYear();
             const selectedDate = new Date(year, month, dateNumber);
-
+            this.isSelected = true
             this.props.onDateSelect(selectedDate);
         }
     }
@@ -126,16 +130,15 @@ export default class Calendar extends PureComponent {
         const isWeekend = weekDay === 0 || weekDay  === 6;
 
         const today = new Date();
-        const isToday = this.props.date.getDate() === dateNumber &&
-                        this.props.date.getMonth() === today.getMonth() &&
-                        this.props.date.getFullYear() === today.getFullYear();
+
+        const isToday = this.props.date.getDate() === dateNumber
 
         return (
             <View key={dateNumber} style={styles.dayOuter}>
                 <TouchableOpacity onPress={() => this.handleDayPress(dateNumber)}>
-                    <View style={[styles.dayInner, isToday ? styles.todayDayInner : {}]}>
+                    <View style={[styles.dayInner, (isToday && this.isSelected) ? styles.todayDayInner : {}]}>
                         <Text style={[styles.dayText, isWeekend ? styles.dayWeekendText : {}]}>
-                            {dateNumber}
+                            {`${dateNumber}`}
                         </Text>
                     </View>
                 </TouchableOpacity>
