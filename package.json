@@ -4,7 +4,8 @@
   "description": "Calendar component for ReactNative. With PropTypes RN-0.48 compatible",
   "dependencies": {
     "react": "^16.0.0-beta.5",
-    "react-native": "^0.48.1"
+    "react-native": "^0.48.1",
+    "prop-types": "^15.5.10"
   },
   "main": "index.js",
   "repository": {
