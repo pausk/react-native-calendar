@@ -1,7 +1,7 @@
 {
   "name": "react-native-calendar-component",
   "version": "0.1.3",
-  "description": "Calendar component for ReactNative. With PropTypes RN-0.48 compatible",
+  "description": "Calendar component for ReactNative. With PropTypes ( RN-0.48 compatible)chevrón",
   "dependencies": {
     "react": "^16.0.0-beta.5",
     "react-native": "^0.48.1",
